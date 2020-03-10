@@ -12,10 +12,11 @@ public class MainActivity extends AppCompatActivity {
     
     private Button  button1, button2, button3, button4, button5, button6, button7, buttonComma,
             button8, button9, button0, buttonEqual, buttonSum, buttonSubtract, buttonMultiply, buttonDivide;
-    private String operation, screetText;
+    private String operation= "";
+    private String screetText;
     private boolean firstButton = true;
+    private TextView mScreen;
 
-    TextView mScreen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,71 +44,100 @@ public class MainActivity extends AppCompatActivity {
         button0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                operation = operation + "0";
+                mScreen.setText(operation);
+                firstButton = false;
             }
         });
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                operation = operation + "1";
+                mScreen.setText(operation);
+                firstButton = false;
             }
         });
 
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                operation = operation + "2";
+                mScreen.setText(operation);
+                firstButton = false;
             }
         });
+
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                operation = operation + "3";
+                mScreen.setText(operation);
+                firstButton = false;
             }
         });
+
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                operation = operation + "4";
+                mScreen.setText(operation);
+                firstButton = false;
             }
         });
+
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                operation = operation + "5";
+                mScreen.setText(operation);
+                firstButton = false;
             }
         });
+
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                operation = operation + "6";
+                mScreen.setText(operation);
+                firstButton = false;
             }
         });
+
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                operation = operation + "7";
+                mScreen.setText(operation);
+                firstButton = false;
             }
         });
+
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                operation = operation + "8";
+                mScreen.setText(operation);
+                firstButton = false;
             }
         });
+
         button9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                operation = operation + "9";
+                mScreen.setText(operation);
+                firstButton = false;
             }
         });
+
         buttonComma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
+
         buttonEqual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,11 +146,15 @@ public class MainActivity extends AppCompatActivity {
             }
             }
         });
+
         buttonSum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(firstButton){
                     Toast.makeText(getApplicationContext(), "Invalid operation", Toast.LENGTH_SHORT).show();
+                }else{
+                    operation = operation + "+";
+                    mScreen.setText(operation);
                 }
 
             }
@@ -153,15 +187,13 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
 
     public double calculateResult(String text){
-        double result= 0;
-
-
-
-        return result;
+        // Example imput: text = "12+56+8/78*2-7
+        // numbers matrix = [12, 56, 8, 78, 2, 7]
+        // operations array = [+, +, /, * ,-]
+        Operation myOperation = new Operation (text);
+        return myOperation.calculateResult();
     }
 }
