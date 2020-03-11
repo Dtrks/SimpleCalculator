@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private String screetText;
     private boolean firstButton = true;
     private TextView mScreen;
+    private double result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,6 +144,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
             if(firstButton){
                 Toast.makeText(getApplicationContext(), "Invalid operation", Toast.LENGTH_SHORT).show();
+            }else{
+                result = calculateResult(operation);
+                //TODO: Poner resultado en pantalla de forma bonita
             }
             }
         });
@@ -190,9 +194,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public double calculateResult(String text){
-        // Example imput: text = "12+56+8/78*2-7
-        // numbers matrix = [12, 56, 8, 78, 2, 7]
-        // operations array = [+, +, /, * ,-]
         Operation myOperation = new Operation (text);
         return myOperation.calculateResult();
     }
