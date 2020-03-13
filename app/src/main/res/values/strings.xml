@@ -17,4 +17,7 @@
     <string name="buttonSubstract">-</string>
     <string name="buttonMultiplicate">x</string>
     <string name="buttondivide">÷</string>
+    <string name="buttonReset">Reset</string>
+    <string name="buttonSqrt">√</string>
+    <string name="buttonElevate">^</string>
 </resources>

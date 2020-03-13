@@ -16,14 +16,16 @@ public class Operation {
 
 
     private int [] obtainNumbers(String inputString){
-        //TODO: Check if there is a - in the beginig.
+        //TODO: Check if there is a - in the begining.
         //Calculate the number of numbers in the input string.
+
         int N = 100;
-        boolean isFirstDigit = true;
+        int indexStartNumber = 0;
+        int indexEndNumber = 0;
+        int arrayPosition = 0;
         int [] numbers = new int[N];
         String currentNumber = "";
 
-        //Array initialization
         for (int i = 0; i < N; i++){
               numbers[i] = 0;
         }
@@ -31,8 +33,9 @@ public class Operation {
         for (int i = 0; i < inputString.length(); i++){
             currentNumber = currentNumber + inputString.charAt(i);
             if(!TextUtils.isDigitsOnly(currentNumber)){
-
+                numbers[arrayPosition] = Integer.parseInt(currentNumber);
             }
+            indexEndNumber = i;
 
         }
 

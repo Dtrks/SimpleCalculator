@@ -7,7 +7,7 @@
     android:gravity="center_vertical"
     android:orientation="vertical"
     tools:context=".MainActivity"
-    android:weightSum="5">
+    android:weightSum="6">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,6 +23,40 @@
             android:layout_weight="1"
             android:text="@string/defaultScreen"
             android:textSize="30sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+            <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonSqrt"
+            android:layout_weight="1"
+            android:text="@string/buttonSqrt"
+            android:textSize="25dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonElevate"
+            android:layout_weight="1"
+            android:text="@string/buttonElevate"
+            android:textSize="25dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonReset"
+            android:layout_weight="1"
+            android:text="@string/buttonReset"
+            android:textStyle="italic"
+            android:textSize="25dp"/>
+
     </LinearLayout>
 
     <LinearLayout
