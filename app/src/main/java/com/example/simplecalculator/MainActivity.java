@@ -10,12 +10,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    
+    //TODO:
+    //*****************************
+    // - Implement comma function
+    // - Parenthesis
+    // - Clean the damn code!
+
+
     private Button  button1, button2, button3, button4, button5, button6, button7, buttonComma,
             button8, button9, button0, buttonEqual, buttonSum, buttonSubtract, buttonMultiply, buttonDivide,
             buttonSqrt, buttonReset, buttonElevate;
     private String operation= "";
-    //private String screetText;
     private boolean firstButton = true;
     private TextView mScreen;
     private double result;
@@ -31,9 +36,7 @@ public class MainActivity extends AppCompatActivity {
         button0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                operation = operation + "0";
-                mScreen.setText(operation);
-                firstButton = false;
+                writeScreen('0', true);
                 Log.d("Calculator", "0 pressed.");
             }
         });
@@ -41,29 +44,23 @@ public class MainActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                operation = operation + "1";
-                mScreen.setText(operation);
-                firstButton = false;
+                writeScreen('1', true);
                 Log.d("Calculator", "1 pressed.");
             }
         });
 
         button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                operation = operation + "2";
-                mScreen.setText(operation);
-                firstButton = false;
-                Log.d("Calculator", "2 pressed.");
+                      @Override
+                      public void onClick(View v) {
+                          writeScreen('2', true);
+                          Log.d("Calculator", "2 pressed.");
             }
         });
 
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                operation = operation + "3";
-                mScreen.setText(operation);
-                firstButton = false;
+                writeScreen('3', true);
                 Log.d("Calculator", "3 pressed.");
             }
         });
@@ -71,9 +68,7 @@ public class MainActivity extends AppCompatActivity {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                operation = operation + "4";
-                mScreen.setText(operation);
-                firstButton = false;
+                writeScreen('4', true);
                 Log.d("Calculator", "4 pressed.");
             }
         });
@@ -81,9 +76,7 @@ public class MainActivity extends AppCompatActivity {
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                operation = operation + "5";
-                mScreen.setText(operation);
-                firstButton = false;
+                writeScreen('5', true);
                 Log.d("Calculator", "5 pressed.");
             }
         });
@@ -91,9 +84,7 @@ public class MainActivity extends AppCompatActivity {
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                operation = operation + "6";
-                mScreen.setText(operation);
-                firstButton = false;
+                writeScreen('6', true);
                 Log.d("Calculator", "6 pressed.");
             }
         });
@@ -101,9 +92,7 @@ public class MainActivity extends AppCompatActivity {
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                operation = operation + "7";
-                mScreen.setText(operation);
-                firstButton = false;
+                writeScreen('7', true);
                 Log.d("Calculator", "7 pressed.");
             }
         });
@@ -111,9 +100,7 @@ public class MainActivity extends AppCompatActivity {
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                operation = operation + "8";
-                mScreen.setText(operation);
-                firstButton = false;
+                writeScreen('8', true);
                 Log.d("Calculator", "8 pressed.");
             }
         });
@@ -121,9 +108,7 @@ public class MainActivity extends AppCompatActivity {
         button9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                operation = operation + "9";
-                mScreen.setText(operation);
-                firstButton = false;
+                writeScreen('9', true);
                 Log.d("Calculator", "9 pressed.");
             }
         });
@@ -144,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
                 result = calculateResult(operation);
                 //TODO: Poner resultado en pantalla de forma bonita
                 mScreen.setText(String.valueOf(result));
-                clearSreen();
+                clearResult();
             }
             }
         });
@@ -152,56 +137,71 @@ public class MainActivity extends AppCompatActivity {
         buttonSum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(firstButton){
-                    Toast.makeText(getApplicationContext(), "Invalid operation", Toast.LENGTH_SHORT).show();
-                }else{
-                    operation = operation + "+";
-                    mScreen.setText(operation);
-                    Log.d("Calculator", "+ pressed.");
-                }
-
+                writeScreen('+', false);
+                Log.d("Calculator", "+ pressed.");
             }
+
+
         });
         buttonSubtract.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    operation = operation + "-";
-                    mScreen.setText(operation);
-                    firstButton = false;
-                    Log.d("Calculator", "- pressed.");
-                    }
+                writeScreen('-', false);
+                Log.d("Calculator", "- pressed.");
+            }
         });
         buttonDivide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(firstButton){
-                    Toast.makeText(getApplicationContext(), "Invalid operation", Toast.LENGTH_SHORT).show();
-                }else{
-                    operation = operation + "/";
-                    mScreen.setText(operation);
-                    firstButton = false;
-                    Log.d("Calculator", "/ pressed.");
+                writeScreen('/',false);
+                Log.d("Calculator", "/ pressed.");
                 }
-
-            }
         });
 
         buttonMultiply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(firstButton){
-                    Toast.makeText(getApplicationContext(), "Invalid operation", Toast.LENGTH_SHORT).show();
-                }else{
-                    operation = operation + "*";
-                    mScreen.setText(operation);
-                    firstButton = false;
-                    Log.d("Calculator", "* pressed.");
-                }
+                writeScreen('*', false);
+                Log.d("Calculator", "* pressed.");
             }
         });
+
+        buttonReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clearScreen();
+                Log.d("Calculator", "Screen cleared. ");
+            }
+        });
+
     }
 
-    private void clearSreen() {
+    private void writeScreen(char c, boolean itsNumber){
+        //itsNumber: t = numeric, f = operation
+
+        if (itsNumber = false) {
+            if (firstButton & c != '-') {
+                Toast.makeText(getApplicationContext(), "Invalid operation", Toast.LENGTH_SHORT).show();
+            }else{
+                operation = operation + c;
+                mScreen.setText(operation);
+            }
+        }else{
+            if (firstButton){
+                firstButton = false;
+            }
+            operation = operation + c;
+            mScreen.setText(operation);
+        }
+    }
+
+    private void clearScreen(){
+        operation = "";
+        firstButton = true;
+        mScreen.setText(R.string.defaultScreen);
+    }
+
+    private void clearResult() {
         //Clears screen and initializes indicators.
         operation = "";
         firstButton = true;
@@ -209,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
 
     public double calculateResult(String text){
         //Calls a function which converts the string into an arithmetic expression.
-
+        Log.d("Calculator", "calculateResult() called...");
         double result = 0;
 
         ArithmeticEvaluator eval = new ArithmeticEvaluator(text);
