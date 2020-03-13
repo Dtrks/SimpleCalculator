@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     // - Implement comma function
     // - Parenthesis
     // - Clean the damn code!
+    // - Improve ans operation
 
 
     private Button  button1, button2, button3, button4, button5, button6, button7, buttonComma,
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private String operation= "";
     private boolean firstButton = true;
     private TextView mScreen;
-    private double result;
+    private double result, ans;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Invalid operation", Toast.LENGTH_SHORT).show();
             }else{
                 result = calculateResult(operation);
+                ans = result;
                 //TODO: Poner resultado en pantalla de forma bonita
                 mScreen.setText(String.valueOf(result));
                 clearResult();
