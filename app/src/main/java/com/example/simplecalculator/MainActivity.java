@@ -132,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
             }else{
                 result = calculateResult(operation);
                 ans = result;
-                //TODO: Poner resultado en pantalla de forma bonita
                 mScreen.setText(String.valueOf(result));
                 setPreviusOperation(operation);
                 prepareNextOperation();

@@ -20,4 +20,6 @@
     <string name="buttonReset">Reset</string>
     <string name="buttonSqrt">√</string>
     <string name="buttonElevate">^</string>
+    <string name="OHHead">Operations done</string>
+    <string name="title_activity_operations_done">operationsDone</string>
 </resources>
