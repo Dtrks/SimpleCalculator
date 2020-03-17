@@ -10,6 +10,7 @@ import android.os.Bundle;
 public class operationsDone extends AppCompatActivity {
 
     private RecyclerView mRecycleView;
+    private static final int LISTA_NUMEROS = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,8 @@ public class operationsDone extends AppCompatActivity {
         mRecycleView.setLayoutManager(linearLayoutManager);
 
         //Adaptador (el que pasa los datos al RecyclerView)
+        RecyclerAdapter mAdapter = new RecyclerAdapter(LISTA_NUMEROS);
 
+        mRecycleView.setAdapter(mAdapter);
     }
 }

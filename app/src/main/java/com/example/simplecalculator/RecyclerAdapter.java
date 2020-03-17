@@ -1,6 +1,8 @@
 package com.example.simplecalculator;
 
 import android.content.Context;
+import android.media.VolumeShaper;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -11,9 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 public class RecyclerAdapter extends RecyclerView.Adapter <RecyclerAdapter.OperationsViewHolder> {
     //Clase adapter para nuestro RecylerView
 
-    private String mOperationDone;
+    //private String mOperationDone;
+    private int mOperationDone;
 
-    public RecyclerAdapter (String mOperationDone){
+    public RecyclerAdapter (int mOperationDone){
         this.mOperationDone = mOperationDone;
     }
 
@@ -22,14 +25,23 @@ public class RecyclerAdapter extends RecyclerView.Adapter <RecyclerAdapter.Opera
     public OperationsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         Context mContext = parent.getContext();
-        // Minuto 20:06
+        int layoutIdListItem = R.layout.operations_list_row;
+        LayoutInflater inflater = LayoutInflater.from(mContext);
+        boolean attachToParentRapido = false;
 
-        return null;
+        View view =inflater.inflate(layoutIdListItem, parent, attachToParentRapido);
+
+        OperationsViewHolder viewHolder = new OperationsViewHolder(view);
+
+
+
+        return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull OperationsViewHolder holder, int position) {
-
+        //'bindea' a cada vista del ViewHolder los datos.
+        holder.bind(position);
     }
 
     @Override
