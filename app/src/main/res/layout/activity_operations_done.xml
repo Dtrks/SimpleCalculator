@@ -1,35 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".operationsDone"
-    android:orientation="vertical">
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/tw_od_head"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:text="@string/OHHead"
+        android:gravity="center"
+        android:textSize="@dimen/headSize"
+        android:textStyle="bold"
+        android:fontFamily="monospace"/>
 
-        <TextView
-            android:id="@+id/mTWOperationsDone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/OHHead"
-            android:textSize="@string/headSize"
-            android:textStyle="bold"
-            android:gravity="center"/>
-    </LinearLayout>
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/mRecyclerViewHistorico"/>
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:id="@+id/rwOperations"
+        />
 </LinearLayout>

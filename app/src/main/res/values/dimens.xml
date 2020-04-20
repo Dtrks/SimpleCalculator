@@ -1,3 +1,7 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="twSize">30sp</dimen>
+    <dimen name="buttonSize">25sp</dimen>
+    <dimen name="headSize">25sp</dimen>
+    <dimen name="frame_size">20sp</dimen>
 </resources>
